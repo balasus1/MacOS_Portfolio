@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+        "#constants/*": ["constants/*"],
+        "#components/*": ["components/*"],
+        "#store/*": ["store/*"],
+        "#hoc/*": ["hoc/*"],
+        "#windows/*": ["windows/*"]
+      }
+    },
+    "include": ["src"]
+  }
+  
