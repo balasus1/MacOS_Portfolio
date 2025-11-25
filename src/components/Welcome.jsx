@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -19,7 +19,9 @@ const FONT_WEIGHTS = {
   title: { min: 700, max: 900, default: 700 },
 };
 const setupTextHover = (container, type) => {
-  if (!container) return;
+  if (!container || !FONT_WEIGHTS[type]) {
+    return () => {};
+  }
   const letters = container.querySelectorAll('span');
   const { min, max, default: base } = FONT_WEIGHTS[type];
   const animateLetter = (letter, weight, duration = 0.25) => {
@@ -40,9 +42,9 @@ const setupTextHover = (container, type) => {
     });
   };
 
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     letters.forEach((letter) => {
-      animateLetter(letter, base), 0.3;
+      animateLetter(letter, base, 0.3);
     });
   }
   container.addEventListener("mousemove", handleMouseMove); 
@@ -54,10 +56,10 @@ const setupTextHover = (container, type) => {
 };
 
 const Welcome = () => {
-  const titlerRef = useRef(null);
+  const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   useGSAP(() => {
-    const titleCleanup = setupTextHover(titlerRef.current, 'title');
+    const titleCleanup = setupTextHover(titleRef.current, 'title');
     const subtitleCleanup = setupTextHover(subtitleRef.current, 'subtitle');
     return () => {
       titleCleanup();
@@ -73,8 +75,8 @@ const Welcome = () => {
           100
         )}
       </p>
-      <h1 ref={titlerRef} className="mt-7">
-        {renderText('Portfolio', 'text-9xl italic font-georama', 500)}
+      <h1 ref={titleRef} className="mt-7">
+        {renderText('Portfolio', 'text-9xl italic font-georama', 700)}
       </h1>
       <div className="small-screen">
         <p>This Portfolio is designed for desktop/tablets only.</p>
