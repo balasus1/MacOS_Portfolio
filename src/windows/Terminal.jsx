@@ -5,16 +5,18 @@ import { Check, Flag } from 'lucide-react';
 import WindowControls from '#components/WindowControls';
 
 const Terminal = () => {
+  const terminalApp = dockApps.find((app) => app.id === 'terminal');
+  
   return (
     <>
     <div id='window-header'>
         <WindowControls target='terminal' />
-        <h2>{dockApps.find((app) => app.id === 'terminal')?.name}</h2>
+        <h2>{terminalApp?.name}</h2>
     </div>
     <div className='techstack'>
         <p>
             <span className='font-bold'>/Volumes/Workspace/balashan-dev/portfolio% </span>
-            show {dockApps.find((app) => app.id === 'terminal')?.name.toLowerCase()}
+            show {terminalApp?.name.toLowerCase()}
         </p>
         <div className='label'>
             <p className='w-32'>Category</p>
