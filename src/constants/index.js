@@ -102,27 +102,27 @@ const navLinks = [
   const techStack = [
     {
       category: "Frontend",
-      items: ["React.js", "Next.js", "TypeScript"],
-    },
-    {
-      category: "Mobile",
-      items: ["React Native", "Expo"],
+      items: ["TypeScript","ReactJS", "NextJS"],
     },
     {
       category: "Styling",
-      items: ["Tailwind CSS", "Sass", "CSS"],
+      items: ["CSS", "SASS","Tailwind", "MaterialUI"],
+    },
+    {
+      category: "Mobile",
+      items: ["Dart","Flutter"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "Express", "NestJS", "Hono"],
+      items: ["Java", "SpringBoot", "Node.js", "Express"]
     },
     {
       category: "Database",
-      items: ["MongoDB", "PostgreSQL"],
+      items: ["MongoDB", "PostgreSQL", "Oracle PL/SQL"],
     },
     {
-      category: "Dev Tools",
-      items: ["Git", "GitHub", "Docker"],
+      category: "Essentials",
+      items: ["GitHub", "Docker", "Jest", "Junit"],
     },
   ];
   
@@ -132,7 +132,7 @@ const navLinks = [
       text: "Github",
       icon: "/icons/github.svg",
       bg: "#f4656b",
-      link: "https://github.com/JavaScript-Mastery-Pro",
+      link: "https://github.com/balasus1",
     },
     {
       id: 2,
