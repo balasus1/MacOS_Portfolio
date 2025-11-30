@@ -16,7 +16,8 @@ const Terminal = () => {
     <div className='techstack'>
         <p>
             <span className='font-bold'>/Volumes/Workspace/balashan-dev/portfolio% </span>
-            show {terminalApp?.name.toLowerCase()}
+            -            show {terminalApp?.name.toLowerCase()}
++            show {terminalApp?.name?.toLowerCase()}
         </p>
         <div className='label'>
             <p className='w-32'>Category</p>
@@ -24,7 +25,7 @@ const Terminal = () => {
         </div>
         <ul className='content'>
             {techStack.map(({ category, items}) => (
-               <li key={category} className='flex items-center wrap'>
+               <li key={category} className='flex items-center'>
                 <Check className='check' size={20} />
                 <h3>{category}</h3>
                 <ul>
