@@ -16,8 +16,7 @@ const Terminal = () => {
     <div className='techstack'>
         <p>
             <span className='font-bold'>/Volumes/Workspace/balashan-dev/portfolio% </span>
-            -            show {terminalApp?.name.toLowerCase()}
-+            show {terminalApp?.name?.toLowerCase()}
+            show {terminalApp?.name?.toLowerCase()}
         </p>
         <div className='label'>
             <p className='w-32'>Category</p>
