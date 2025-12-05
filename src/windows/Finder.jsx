@@ -20,7 +20,7 @@ const Finder = () => {
   const { openWindow } = useWindowStore();
   const sidebarSections = [
     { name: 'Favorites', items: Object.values(locations) },
-    { name: 'Workspace', items: locations.work.children },
+    { name: 'Workspace', items: locations.work.children || [] },
   ];
 
   const canGoBack = historyIndex > 0;
@@ -43,7 +43,12 @@ const Finder = () => {
       }
       return;
     }
-    openWindow(`${item.fileType}${item.kind}`, item);
+    // Validate fileType and kind before concatenation
+    if (item.fileType && item.kind) {
+      openWindow(`${item.fileType}${item.kind}`, item);
+    } else {
+      console.warn('Invalid item: missing fileType or kind', item);
+    }
   };
 
   return (
@@ -102,7 +107,14 @@ const Finder = () => {
           >
             <List className="w-4 h-4" />
           </button>
-          <Search className="icon ml-2" />
+          <button
+            type="button"
+            className="icon ml-2"
+            aria-label="Search"
+            title="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
         </div>
       </div>
       <div className="bg-white flex h-full">
@@ -123,6 +135,15 @@ const Finder = () => {
               key={item.id}
               className={clsx('finder-item', viewMode === 'list' && 'list-item')}
               onClick={() => openItem(item)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  openItem(item);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${item.name}`}
             >
               <img src={item.icon} alt={item.name} />
               <p>{item.name}</p>
@@ -143,18 +164,39 @@ const LocationList = ({
   <div>
     <h3>{locationName}</h3>
     <ul>
-      {items.map((location) => (
-        <li
-          key={location.id}
-          onClick={() => setActiveLocation(location)}
-          className={clsx(
-            activeLocation && location.id === activeLocation.id
-              ? 'active'
-              : 'not-active'
-          )}
-        >
-          <img src={location.icon} alt={location.name} className="w-4" />
-          <p className="text-sm font-medium truncate">{location.name}</p>
+      {items?.map((location) => (
+        <li key={location?.id}>
+          <button
+            type="button"
+            onClick={() => setActiveLocation(location)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setActiveLocation(location);
+              }
+            }}
+            className={clsx(
+              'w-full flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors',
+              activeLocation && location?.id === activeLocation?.id
+                ? 'active'
+                : 'not-active'
+            )}
+            aria-label={`Navigate to ${location?.name || 'location'}`}
+            aria-current={
+              activeLocation && location?.id === activeLocation?.id
+                ? 'true'
+                : undefined
+            }
+          >
+            <img
+              src={location?.icon}
+              alt={location?.name || 'Location icon'}
+              className="w-4"
+            />
+            <p className="text-sm font-medium truncate">
+              {location?.name || 'Unknown'}
+            </p>
+          </button>
         </li>
       ))}
     </ul>

@@ -12,7 +12,7 @@ const useLocationStore = create(
     setActiveLocation: (location = null) => set((state) => {
       const newLocation = location || DEFAULT_LOCATION;
       // If navigating to a new location, add to history
-      if (location && location.id !== state.activeLocation?.id) {
+      if (newLocation.id !== state.activeLocation?.id) {
         // Remove any forward history if we're navigating to a new location
         state.navigationHistory = state.navigationHistory.slice(0, state.historyIndex + 1);
         state.navigationHistory.push(newLocation);
