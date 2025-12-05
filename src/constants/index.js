@@ -114,7 +114,7 @@ const navLinks = [
     },
     {
       category: "Backend",
-      items: ["Java", "SpringBoot", "Node.js", "ExpressJS"]
+      items: ["Java", "SpringBoot", "Node.js", "ExpressJS"],
     },
     {
       category: "Database",

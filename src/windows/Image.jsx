@@ -26,7 +26,7 @@ const Image = () => {
             alt={data.name}
             className="w-full h-fit object-contain object-center"
             onError={() => {
-              console.error('Error loading image:', data.imageUrl);
+              console.error('Error loading image');
               setImageError(true);
             }}
             loading="lazy"
