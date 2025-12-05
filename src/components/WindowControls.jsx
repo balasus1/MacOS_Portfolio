@@ -3,7 +3,7 @@ import useWindowStore from '#store/window';
 const WindowControls = ({ target }) => {
   const { closeWindow, minimizeWindow, maximizeWindow } = useWindowStore();
   return (
-    <div id="window-controls">
+    <div className="window-controls">
       <button
         type="button"
         className="close"

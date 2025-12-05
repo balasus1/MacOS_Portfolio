@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import WindowWrapper from '#hoc/WindowWrapper';
 import { WindowControls } from '#components';
-import { Download } from 'lucide-react';
+import { Download, AlertCircle } from 'lucide-react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -14,9 +14,16 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const Resume = () => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [error, setError] = useState(null);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
+    setError(null);
+  };
+
+  const onDocumentLoadError = (error) => {
+    console.error('Error loading PDF:', error);
+    setError('Failed to load resume. Please try again later.');
   };
 
   return (
@@ -59,19 +66,34 @@ const Resume = () => {
             Next
           </button>
         </div>
-        <Document
-          file="/files/resume.pdf"
-          onLoadSuccess={onDocumentLoadSuccess}
-          onLoadError={(error) => {
-            console.error('Error loading PDF:', error);
-          }}
-        >
-          <Page
-            pageNumber={pageNumber}
-            renderTextLayer={false}
-            renderAnnotationLayer={false}
-          />
-        </Document>
+        {error ? (
+          <div className="flex flex-col items-center justify-center h-full min-h-[200px] text-gray-500 p-6">
+            <AlertCircle className="w-12 h-12 mb-2 text-red-500" />
+            <p className="text-sm font-medium">{error}</p>
+            <button
+              type="button"
+              onClick={() => {
+                setError(null);
+                setPageNumber(1);
+              }}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        ) : (
+          <Document
+            file="/files/resume.pdf"
+            onLoadSuccess={onDocumentLoadSuccess}
+            onLoadError={onDocumentLoadError}
+          >
+            <Page
+              pageNumber={pageNumber}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+            />
+          </Document>
+        )}
       </div>
     </>
   );

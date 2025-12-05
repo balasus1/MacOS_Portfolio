@@ -98,6 +98,7 @@ body {
     }
   }
 
+  .window-controls,
   #window-controls {
     @apply flex gap-2;
 

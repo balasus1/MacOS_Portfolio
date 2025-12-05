@@ -102,11 +102,11 @@ const navLinks = [
   const techStack = [
     {
       category: "Frontend",
-      items: ["TypeScript","ReactJS", "NextJS"],
+      items: ["TypeScript", "ReactJS", "NextJS"],
     },
     {
       category: "Styling",
-      items: ["CSS", "SASS","Tailwind"],
+      items: ["CSS", "SASS", "Tailwind"],
     },
     {
       category: "Mobile",
@@ -122,7 +122,7 @@ const navLinks = [
     },
     {
       category: "Essentials",
-      items: ["GitHub", "Docker", "Jest", "Junit"],
+      items: ["GitHub", "Docker", "Jest", "JUnit"],
     },
   ];
   
@@ -428,8 +428,8 @@ const navLinks = [
         image: "/images/myPhoto.jpg",
         description: [
           "Hey! I’m Balasubramanian Shanmugham 👋, a full stack developer who enjoys building scalable backend applications using Spring Boot, Node.js and also building interactive web applications using React, Next.js and TailwindCSS that are responsive and fast.",
-          "I specialize in Java & Spring Boot, JavaScript, React, and Next.js—and I love making things to feel smooth, fast, and just a little bit delightful.",
-          "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
+          "I specialize in Java & Spring Boot, JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
+          "I focus on clean UI, good UX, and writing code that doesn't need a search party to debug.",
           "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
         ],
       },

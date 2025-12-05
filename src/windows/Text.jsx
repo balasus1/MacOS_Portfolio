@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import WindowWrapper from '#hoc/WindowWrapper';
 import { WindowControls } from '#components';
 import useWindowStore from '#store/window';
@@ -5,6 +6,7 @@ import useWindowStore from '#store/window';
 const Text = () => {
   const { windows } = useWindowStore();
   const data = windows.txtfile?.data;
+  const [imageError, setImageError] = useState(false);
 
   if (!data) {
     return null;
@@ -17,14 +19,14 @@ const Text = () => {
         <h2>{data.name}</h2>
       </div>
       <div className="text-content p-6 overflow-auto">
-        {data.image && (
+        {data.image && !imageError && (
           <img
             src={data.image}
             alt={data.name}
             className="w-full max-w-md mx-auto mb-6 rounded-lg"
-            onError={(e) => {
+            onError={() => {
               console.error('Error loading image:', data.image);
-              e.target.style.display = 'none';
+              setImageError(true);
             }}
             loading="lazy"
           />
