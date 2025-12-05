@@ -35,6 +35,23 @@ const useWindowStore = create(
         const win = state.windows[windowKey];
         win.zIndex = state.nextZIndex++;
     }),
+    minimizeWindow: (windowKey) => set((state)=> {
+        if (!state.windows[windowKey]) {
+            console.error(`Window key "${windowKey}" does not exist`);
+            return;
+        }
+        const win = state.windows[windowKey];
+        win.isOpen = false;
+    }),
+    maximizeWindow: (windowKey) => set((state)=> {
+        if (!state.windows[windowKey]) {
+            console.error(`Window key "${windowKey}" does not exist`);
+            return;
+        }
+        const win = state.windows[windowKey];
+        win.isOpen = true;
+        win.zIndex = state.nextZIndex++;
+    }),
   })),
 );
 

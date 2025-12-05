@@ -86,9 +86,9 @@ const navLinks = [
     {
       id: 2,
       date: "Aug 28, 2025",
-      title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-      image: "/images/blog2.png",
-      link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+      title: "Apache Kafka Partition Key: A Comprehensive Guide",
+      image: "/images/kafka_logo.png",
+      link: "https://www.confluent.io/learn/kafka-partition-key/#understanding-partition-keys",
     },
     {
       id: 3,
@@ -96,7 +96,7 @@ const navLinks = [
       title: "The Ultimate Guide to Mastering GSAP Animations",
       image: "/images/blog3.png",
       link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
-    },
+    }
   ];
   
   const techStack = [
@@ -139,7 +139,7 @@ const navLinks = [
       text: "Platform",
       icon: "/icons/atom.svg",
       bg: "#4bcb63",
-      link: "https://jsmastery.com/",
+      link: "https://www.portfolio.balashan.dev/",
     },
     {
       id: 3,

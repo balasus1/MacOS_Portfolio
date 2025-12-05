@@ -7,7 +7,8 @@ import { Draggable } from 'gsap/Draggable';
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
     const { focusWindow, windows } = useWindowStore();
-    const { isOpen, zIndex } = windows[windowKey];
+    const window = windows[windowKey];
+    const { isOpen = false, zIndex = 1000 } = window || {};
     const ref = useRef(null);
 
     useGSAP(() => {
@@ -23,19 +24,34 @@ const WindowWrapper = (Component, windowKey) => {
     useGSAP(() => {
       const el = ref.current;
       if (!el) { return () => {} }
-      const [instance] = Draggable.create(el, {onPress:() => focusWindow(windowKey)});
+      const [instance] = Draggable.create(el, {
+        onPress: () => focusWindow(windowKey),
+      });
       return () => instance.kill();
-    }, []);
+    }, [focusWindow, windowKey]);
 
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) { return () => {} }
+      if (!window) {
+        el.style.display = 'none';
+        return;
+      }
       el.style.display = isOpen ? 'block' : 'none';
-    }, [isOpen]);
+    }, [isOpen, window]);
+
+    if (!window) {
+      console.error(`Window key "${windowKey}" does not exist in windows store`);
+    }
 
     return (
-      <section id={windowKey} ref={ref} style={{ zIndex }} className="absolute">
-        <Component {...props} />
+      <section
+        id={windowKey}
+        ref={ref}
+        style={{ zIndex }}
+        className="absolute resize"
+      >
+        {window && <Component {...props} />}
       </section>
     );
   };

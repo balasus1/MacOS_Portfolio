@@ -1,4 +1,3 @@
-import React from 'react'
 import WindowWrapper from '#hoc/WindowWrapper';
 import { techStack, dockApps } from '#constants/index';
 import { Check, Flag } from 'lucide-react';
@@ -29,7 +28,7 @@ const Terminal = () => {
                 <h3>{category}</h3>
                 <ul>
                     {items.map((item, i) => (
-                        <li key={i}>
+                        <li key={`${category}-${item}-${i}`}>
                             {item} {i < items.length - 1 ? '|' : ''}
                         </li>
                     ))}
