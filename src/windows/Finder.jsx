@@ -26,6 +26,13 @@ const Finder = () => {
   const canGoBack = historyIndex > 0;
   const canGoForward = historyIndex < navigationHistory.length - 1;
 
+  const handleKeyDown = (e, callback) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      callback();
+    }
+  };
+
   const openItem = (item) => {
     if (!item) return;
 
@@ -126,6 +133,7 @@ const Finder = () => {
               items={items}
               activeLocation={activeLocation}
               setActiveLocation={setActiveLocation}
+              handleKeyDown={handleKeyDown}
             />
           ))}
         </div>
@@ -135,12 +143,7 @@ const Finder = () => {
               key={item.id}
               className={clsx('finder-item', viewMode === 'list' && 'list-item')}
               onClick={() => openItem(item)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  openItem(item);
-                }
-              }}
+              onKeyDown={(e) => handleKeyDown(e, () => openItem(item))}
               role="button"
               tabIndex={0}
               aria-label={`Open ${item.name}`}
@@ -160,6 +163,7 @@ const LocationList = ({
   items,
   activeLocation,
   setActiveLocation,
+  handleKeyDown,
 }) => (
   <div>
     <h3>{locationName}</h3>
@@ -169,12 +173,7 @@ const LocationList = ({
           <button
             type="button"
             onClick={() => setActiveLocation(location)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setActiveLocation(location);
-              }
-            }}
+            onKeyDown={(e) => handleKeyDown(e, () => setActiveLocation(location))}
             className={clsx(
               'w-full flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors',
               activeLocation && location?.id === activeLocation?.id

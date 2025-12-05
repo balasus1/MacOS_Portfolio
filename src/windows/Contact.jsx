@@ -27,25 +27,27 @@ const Contact = () => {
           </a>
         </p>
         <ul>
-          {socials.map((social) => (
-            <li
-              key={social.id}
-              className="rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300"
-              style={{ backgroundColor: social.bg }}
-            >
-              <a
-                href={social.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3"
-              >
-                <img src={social.icon} alt={social.text} className="size-5" />
-                <p className="font-semibold text-sm text-white">
-                  {social.text}
-                </p>
-              </a>
-            </li>
-          ))}
+          {Array.isArray(socials) && socials.length > 0
+            ? socials.map((social) => (
+                <li
+                  key={social.id}
+                  className="rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300"
+                  style={{ backgroundColor: social.bg }}
+                >
+                  <a
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3"
+                  >
+                    <img src={social.icon} alt={social.text} className="size-5" />
+                    <p className="font-semibold text-sm text-white">
+                      {social.text}
+                    </p>
+                  </a>
+                </li>
+              ))
+            : null}
         </ul>
       </div>
     </>
