@@ -106,19 +106,19 @@ const navLinks = [
     },
     {
       category: "Styling",
-      items: ["CSS", "SASS","Tailwind", "MaterialUI"],
+      items: ["CSS", "SASS","Tailwind"],
     },
     {
       category: "Mobile",
-      items: ["Dart","Flutter"],
+      items: ["Flutter"],
     },
     {
       category: "Backend",
-      items: ["Java", "SpringBoot", "Node.js", "Express"]
+      items: ["Java", "SpringBoot", "Node.js", "ExpressJS"]
     },
     {
       category: "Database",
-      items: ["MongoDB", "PostgreSQL", "Oracle PL/SQL"],
+      items: ["MongoDB", "PostgreSQL"],
     },
     {
       category: "Essentials",
@@ -146,14 +146,14 @@ const navLinks = [
       text: "Twitter/X",
       icon: "/icons/twitter.svg",
       bg: "#ff866b",
-      link: "https://x.com/jsmasterypro",
+      link: "https://x.com/balashan0027",
     },
     {
       id: 4,
       text: "LinkedIn",
       icon: "/icons/linkedin.svg",
       bg: "#05b6f6",
-      link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+      link: "https://www.linkedin.com/in/spike0027/",
     },
   ];
   
@@ -397,7 +397,7 @@ const navLinks = [
         kind: "file",
         fileType: "img",
         position: "top-10 left-5",
-        imageUrl: "/images/adrian.jpg",
+        imageUrl: "/images/myPhoto.jpg",
       },
       {
         id: 2,
@@ -406,7 +406,7 @@ const navLinks = [
         kind: "file",
         fileType: "img",
         position: "top-28 right-72",
-        imageUrl: "/images/adrian-2.jpg",
+        imageUrl: "/images/myPhoto.jpg",
       },
       {
         id: 3,
@@ -415,7 +415,7 @@ const navLinks = [
         kind: "file",
         fileType: "img",
         position: "top-52 left-80",
-        imageUrl: "/images/adrian-3.jpeg",
+        imageUrl: "/images/myPhoto.jpg",
       },
       {
         id: 4,
@@ -425,10 +425,10 @@ const navLinks = [
         fileType: "txt",
         position: "top-60 left-5",
         subtitle: "Meet the Developer Behind the Code",
-        image: "/images/adrian.jpg",
+        image: "/images/myPhoto.jpg",
         description: [
-          "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-          "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
+          "Hey! I’m Balasubramanian Shanmugham 👋, a full stack developer who enjoys building scalable backend applications using Spring Boot, Node.js and also building interactive web applications using React, Next.js and TailwindCSS that are responsive and fast.",
+          "I specialize in Java & Spring Boot, JavaScript, React, and Next.js—and I love making things to feel smooth, fast, and just a little bit delightful.",
           "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
           "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
         ],
