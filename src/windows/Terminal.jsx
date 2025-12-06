@@ -1,4 +1,3 @@
-import React from 'react'
 import WindowWrapper from '#hoc/WindowWrapper';
 import { techStack, dockApps } from '#constants/index';
 import { Check, Flag } from 'lucide-react';
@@ -16,8 +15,7 @@ const Terminal = () => {
     <div className='techstack'>
         <p>
             <span className='font-bold'>/Volumes/Workspace/balashan-dev/portfolio% </span>
-            -            show {terminalApp?.name.toLowerCase()}
-+            show {terminalApp?.name?.toLowerCase()}
+            show {terminalApp?.name?.toLowerCase()}
         </p>
         <div className='label'>
             <p className='w-32'>Category</p>
@@ -30,7 +28,7 @@ const Terminal = () => {
                 <h3>{category}</h3>
                 <ul>
                     {items.map((item, i) => (
-                        <li key={i}>
+                        <li key={`${category}-${item}-${i}`}>
                             {item} {i < items.length - 1 ? '|' : ''}
                         </li>
                     ))}

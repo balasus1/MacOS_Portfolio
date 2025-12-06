@@ -98,6 +98,7 @@ body {
     }
   }
 
+  .window-controls,
   #window-controls {
     @apply flex gap-2;
 
@@ -116,6 +117,18 @@ body {
 
   #window-header {
     @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
+  }
+
+  /* Remove list bullets from all windows wrapped by HOC */
+  section[id] {
+    ul,
+    ol {
+      @apply list-none;
+    }
+
+    li {
+      @apply list-none;
+    }
   }
 
   #safari {
@@ -297,7 +310,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden max-h-[80vh];
 
     #window-header {
       h2 {
@@ -308,6 +321,12 @@ body {
 
   #finder {
     @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+
+    #window-header {
+      h2 {
+        @apply font-semibold text-sm text-gray-700 text-left;
+      }
+    }
 
     .sidebar {
       @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
@@ -334,17 +353,37 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 bg-white max-w-2xl;
 
-      li {
-        @apply absolute flex items-center flex-col gap-3;
+      &.list-view {
+        @apply flex flex-col gap-2 p-4 overflow-auto list-none;
 
-        img {
-          @apply object-contain object-center size-16 relative group-hover:scale-105;
+        .finder-item {
+          @apply flex items-center gap-3 p-2 rounded hover:bg-gray-100 cursor-pointer transition-colors relative list-none;
+
+          img {
+            @apply size-8 object-contain object-center flex-shrink-0;
+          }
+
+          p {
+            @apply text-sm font-medium text-gray-700 truncate;
+          }
         }
+      }
 
-        p {
-          @apply text-sm text-center font-medium w-40;
+      &:not(.list-view) {
+        @apply grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-6 p-6 overflow-auto;
+
+        .finder-item {
+          @apply flex flex-col items-center gap-2 cursor-pointer transition-transform hover:scale-105;
+
+          img {
+            @apply object-contain object-center size-16 transition-transform;
+          }
+
+          p {
+            @apply text-sm text-center font-medium text-gray-700 break-words max-w-[120px];
+          }
         }
       }
     }
